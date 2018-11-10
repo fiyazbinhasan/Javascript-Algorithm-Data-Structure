@@ -5,12 +5,14 @@ var Stack = function(capacity) {
 };
 
 Stack.prototype.push = function(item) {
-  if (this._count < this._capacity) this._storage[this._count++] = item;
-  else console.log("Stack overflow");
+  if (this._count < this._capacity) {
+    this._storage[this._count++] = item;
+    return this._storage;
+  } else return 'Stack overflow';
 };
 
 Stack.prototype.pop = function() {
-  if (this._count == 0) console.log("Stack is empty");
+  if (this._count == 0) return 'Stack is empty';
   else {
     let item = this._storage[--this._count];
     delete this._storage[this._count];
@@ -19,7 +21,7 @@ Stack.prototype.pop = function() {
 };
 
 Stack.prototype.peek = function() {
-  if (this._count == 0) return "Stack is empty";
+  if (this._count == 0) return 'Stack is empty';
   else return this._storage[this._count - 1];
 };
 

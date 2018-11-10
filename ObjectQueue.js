@@ -7,12 +7,14 @@ var Queue = function(capacity) {
 };
 
 Queue.prototype.enqueue = function(value) {
-  if (this.count() < this._capacity) this._storage[this._tail++] = value;
-  else return "Queue is maxed out!";
+  if (this.count() < this._capacity) {
+    this._storage[this._tail++] = value;
+    return this._storage;
+  } else return 'Queue is maxed out!';
 };
 
 Queue.prototype.dequeue = function() {
-  if (this.count() == 0) return "Queue is empty";
+  if (this.count() == 0) return 'Queue is empty';
   var element = this._storage[this._head];
   delete this._storage[this._head];
   if (this._head < this._tail) this._head++;
@@ -20,7 +22,7 @@ Queue.prototype.dequeue = function() {
 };
 
 Queue.prototype.peek = function() {
-  if (this.count() == 0) return "Stack is empty";
+  if (this.count() == 0) return 'Stack is empty';
   else return this._storage[this._head];
 };
 
