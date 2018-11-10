@@ -20,7 +20,7 @@ Queue.prototype.dequeue = function() {
 };
 
 Queue.prototype.peek = function() {
-  if (this.count() == 0) console.log("Stack is empty");
+  if (this.count() == 0) return "Stack is empty";
   else return this._storage[this._head];
 };
 

@@ -19,7 +19,7 @@ Stack.prototype.pop = function() {
 };
 
 Stack.prototype.peek = function() {
-  if (this._count == 0) console.log("Stack is empty");
+  if (this._count == 0) return "Stack is empty";
   else return this._storage[this._count - 1];
 };
 
