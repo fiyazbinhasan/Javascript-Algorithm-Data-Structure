@@ -29,8 +29,8 @@ const mergeSort = arr => {
 
 const merge = (left, right) => {
   let result = [];
-  leftIndex = 0;
-  rightIndex = 0;
+  let leftIndex = 0;
+  let rightIndex = 0;
 
   while (leftIndex < left.length && rightIndex < right.length) {
     if (left[leftIndex] < right[rightIndex]) {
