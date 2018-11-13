@@ -9,6 +9,8 @@ const loopNTimes = n => {
   }
 };
 
+loopNTimes(5);
+
 // ==== Stack ====
 // loopNTimes(1); 5th (n = 1 && n == 1) so pop and log 1;
 // loopNTimes(2); 4th (n = 2 && n != 1)
@@ -37,14 +39,13 @@ const loopNTimes = n => {
 // ==== Stack ====
 // empty stack exit the program;
 
-loopNTimes(5);
-
 const loopRange = (min, max) => {
   if (min == max) {
     console.log(min);
+    //return; // explicit return
   } else {
     console.log(min);
-    loopRange(min + 1, max);
+    return loopRange(min + 1, max);
   }
 };
 
@@ -54,10 +55,10 @@ const loopRangeV2 = (start, end) => {
   function recursive(current) {
     console.log(current);
     if (current < end) {
-      recursive(current + 1);
+      return recursive(current + 1);
     }
   }
-  recursive(start);
+  return recursive(start);
 };
 
 loopRangeV2(1, 5);
@@ -70,15 +71,17 @@ const joinElements = (elements, token) => {
     if (index < length - 1) {
       accumulator = accumulator.concat(current + token);
       index++;
-      recursion(elements[index], accumulator);
+      return recursion(elements[index], accumulator);
     } else {
-      console.log(accumulator.concat(elements[index++]));
+      return accumulator.concat(elements[index]);
     }
   }
-  recursion(elements[index], '');
+  return recursion(elements[index], "");
 };
 
-joinElements(['H', 'r', ' is your s', 'cr', 't cod', ' :) :)'], 'e');
+console.log(
+  joinElements(["H", "r", " is your s", "cr", "t cod", " :) :)"], "e")
+);
 
 const joinElementsV2 = (elements, token) => {
   function recursion(index, accumulator) {
@@ -89,11 +92,11 @@ const joinElementsV2 = (elements, token) => {
       return recursion(index + 1, accumulator + token);
     }
   }
-  return recursion(0, '');
+  return recursion(0, "");
 };
 
 console.log(
-  joinElementsV2(['H', 'r', ' is your s', 'cr', 't cod', ' :) :)'], 'e')
+  joinElementsV2(["H", "r", " is your s", "cr", "t cod", " :) :)"], "e")
 );
 
 const factorial = n => {
@@ -127,10 +130,10 @@ const factorialMemoizationWithCallback = cb => {
   let cache = {};
   return n => {
     if (n in cache) {
-      console.log('Returning from cache');
+      console.log("Returning from cache");
       return cache[n];
     } else {
-      console.log('Storing in cache');
+      console.log("Storing in cache");
       result = cb(n);
       cache[n] = result;
       return result;
