@@ -19,11 +19,11 @@ const coins = [1, 2, 3];
 
 const makeChangeBruteForce = value => {
   if (value === 0) return 0;
-  let minCoins;
+  let minCoins = -1;
   coins.forEach(coin => {
     if (value - coin >= 0) {
       let currentMinCoins = makeChangeBruteForce(value - coin);
-      if (minCoins === undefined || minCoins > currentMinCoins)
+      if (minCoins === -1 || minCoins > currentMinCoins)
         minCoins = currentMinCoins;
     }
   });
