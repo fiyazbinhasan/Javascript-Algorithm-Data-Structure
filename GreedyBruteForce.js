@@ -31,21 +31,3 @@ const makeChangeBruteForce = value => {
 };
 
 console.log(makeChangeBruteForce(5));
-
-const cache = {};
-
-const makeChangeMemoizeBruteForce = value => {
-  if (cache[value]) return cache[value];
-  let minCoins = -1;
-  coins.forEach(coin => {
-    if (value - coin >= 0) {
-      let currentMinCoins = makeChangeBruteForce(value - coin);
-      if (minCoins === -1 || minCoins > currentMinCoins)
-        minCoins = currentMinCoins;
-    }
-  });
-  cache[value] = minCoins + 1;
-  return cache[value];
-};
-
-console.log(makeChangeMemoizeBruteForce(5));
