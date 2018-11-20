@@ -1,7 +1,7 @@
-const make2dArray = (cols, rows) => {
-  let arr = new Array(cols);
+const make2dArray = (rows, cols) => {
+  let arr = new Array(rows);
   for (let i = 1; i < arr.length; i++) {
-    arr[i] = new Array(rows);
+    arr[i] = new Array(cols);
   }
   return arr;
 };

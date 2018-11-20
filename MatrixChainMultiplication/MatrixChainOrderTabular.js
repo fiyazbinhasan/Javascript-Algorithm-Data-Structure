@@ -1,7 +1,7 @@
-const make2dArray = (cols, rows) => {
-  let arr = new Array(cols);
+const make2dArray = (rows, cols) => {
+  let arr = new Array(rows);
   for (let i = 0; i < arr.length; i++) {
-    arr[i] = new Array(rows);
+    arr[i] = new Array(cols);
   }
   return arr;
 };
@@ -42,7 +42,7 @@ const printOptimalParens = (s, i, j) => {
   else {
     parens += "(";
     printOptimalParens(s, i, s[i][j]);
-    parens += "."
+    parens += ".";
     printOptimalParens(s, s[i][j] + 1, j);
     parens += ")";
   }
